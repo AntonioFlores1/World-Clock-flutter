@@ -8,6 +8,7 @@ class WorldClock {
   String time; //Location Time
   String flag; //Url of flag icon
   String url; //Region URL endpoint
+  bool isDaytime ;
 
   WorldClock({this.location,this.flag,this.url});
 
@@ -28,6 +29,8 @@ try {
     //Date time object
     DateTime now = DateTime.parse(datetime);
     now = now.add(Duration(hours: int.parse(offset)));
+
+    isDaytime = now.hour > 6 && now.hour < 20 ? true : false;
 
     //Changes Date to String like .desc in iOS
     time = DateFormat.jm().format(now);
